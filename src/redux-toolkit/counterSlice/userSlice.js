@@ -1,14 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import api from "../../axios/api";
 
 
 export const fetchUsers = createAsyncThunk('user/fetch', async () => {
- const response = await fetch('https://jsonplaceholder.typicode.com/posts')
-  const data = await response.json()
+ const data = await api.Activities.poste()
+  // const data = await response.json()
+  
   return data
 })
 const initialState ={
 userList :[],
-fetchingUsers:false,
+loader:true,
+fetchingUsers:true,
 erroeMassage:null
 }
  const userSlice=createSlice({
@@ -17,7 +20,7 @@ initialState ,
 extraReducers:{
   [fetchUsers.fulfilled]: (state, action) => {
       state.userList = action.payload
-      state.fetchingUsers = false
+      state.fetchingUsers = true
     },
 
  [fetchUsers.pending]: state => {

@@ -11,7 +11,6 @@ export default function UserList() {
     dispatch(fetchUsers())
   }, [dispatch])
 
-  console.log(userList)
   return (
     <div>
       {userList.map(user => (
