@@ -10,6 +10,7 @@ export default function UserList() {
   useEffect(() => {
     dispatch(fetchUsers())
   }, [dispatch])
+
   console.log(userList)
   return (
     <div>
